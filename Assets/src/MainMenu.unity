@@ -349,7 +349,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bb4c7d2252700b45b5c660fac07e9a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  url: https://github.com/LqWkWyn/IMMProjectFinals
+  url: https://github.com/LqWkWyn/IMMProjectFinal
 --- !u!114 &368332676
 MonoBehaviour:
   m_ObjectHideFlags: 0

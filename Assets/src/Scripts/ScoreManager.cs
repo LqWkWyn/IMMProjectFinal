@@ -45,6 +45,8 @@ public class ScoreManager : MonoBehaviour
         }
     }
 
+
+
     // Call this when game resets or player dies
     public void ResetCurrentScore()
     {

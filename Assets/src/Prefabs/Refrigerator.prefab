@@ -190,3 +190,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 3
   agent: {fileID: -7380216460888374811}
+  moveSound: {fileID: 8300000, guid: f881efc99f957f749979d47165207d6c, type: 3}

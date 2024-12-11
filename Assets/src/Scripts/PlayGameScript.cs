@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class MainMenu : MonoBehaviour
 {
     
-
+    
  
 
     public void StartGame()
@@ -23,4 +23,5 @@ public class MainMenu : MonoBehaviour
         Application.Quit();
 
     }
+
 }

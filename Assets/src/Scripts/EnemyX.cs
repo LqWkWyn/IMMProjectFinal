@@ -11,6 +11,10 @@ public class EnemyX : MonoBehaviour
     public NavMeshAgent agent;
     private SpawnManagerX spawnManagerX;
 
+    // Add an AudioSource reference
+    private AudioSource audioSource;
+    public AudioClip moveSound;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +22,8 @@ public class EnemyX : MonoBehaviour
         player = GameObject.Find("Player");
         spawnManagerX = GameObject.Find("Spawn Manager").GetComponent<SpawnManagerX>();
         speed = spawnManagerX.enemySpeed;
+
+       
     }
 
     // Update is called once per frame
@@ -25,6 +31,9 @@ public class EnemyX : MonoBehaviour
     {
         Vector3 hitpoint = player.transform.position;
         agent.SetDestination(hitpoint);
+    
+            audioSource.PlayOneShot(moveSound,0.3f);
+
     }
 
     private void OnCollisionEnter(Collision other)

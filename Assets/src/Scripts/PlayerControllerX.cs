@@ -12,6 +12,9 @@ public class PlayerControllerX : MonoBehaviour
     public bool hasPowerup;
     //public GameObject powerupIndicator;
     public int powerUpDuration = 5;
+    public GameObject pickupEffect;
+    public AudioClip pickupSound;
+    public AudioSource playerAudio;
 
     
     
@@ -59,8 +62,19 @@ public class PlayerControllerX : MonoBehaviour
             hasPowerup = true;
             //powerupIndicator.SetActive(true);
             StartCoroutine(PowerupCooldown());
+            Instantiate(pickupEffect, transform.position, Quaternion.identity);
+            playerAudio.PlayOneShot(pickupSound, 1.0f);
+            
         }
     }
+    // private void Pickup()
+    //{
+        // Instantiate the particle effect at the power-up's position
+       // Instantiate(pickupEffect, transform.position, Quaternion.identity);
+        //playerAudio.PlayOneShot(pickupSound, 1.0f);
+
+        
+   // }
 
     // Coroutine to count down powerup duration
     IEnumerator PowerupCooldown()

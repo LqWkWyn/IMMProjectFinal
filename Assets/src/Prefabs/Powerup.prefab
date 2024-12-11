@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: -6130081167149399182}
   - component: {fileID: -1903288843633674774}
   - component: {fileID: -9131203737378116155}
+  - component: {fileID: -1994372288621183589}
   m_Layer: 6
   m_Name: Powerup
   m_TagString: Powerup
@@ -64,8 +65,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: da78ea995e355794bb395ced356375fb, type: 2}
-  - {fileID: 2100000, guid: 37e322977533559438c6b9ad2e68f396, type: 2}
+  - {fileID: 2100000, guid: 9c655a40e8a280c4f9ddff622dc675a2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -140,3 +140,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0
   agent: {fileID: -7380216460888374811, guid: a40926f8e90849d4db2aa2425e64b07e, type: 3}
+--- !u!114 &-1994372288621183589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 162168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32b70120505027e42a061406181318d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

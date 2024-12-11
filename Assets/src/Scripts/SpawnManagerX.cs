@@ -7,12 +7,12 @@ public class SpawnManagerX : MonoBehaviour
     public GameObject enemyPrefab;
     public GameObject powerupPrefab;
 
-    private float spawnRangeX = 15;
-    private float spawnZMin = 15; // set min spawn Z
-    private float spawnZMax = 25; // set max spawn Z
+    private float spawnRangeX = 20;
+    private float spawnZMin = 10; // set min spawn Z
+    private float spawnZMax = 30; // set max spawn Z
 
     public int powerupCount;
-    public int waveCount = 1;
+    public int waveCount = 1; // Start with wave 1
     public float enemySpeed = 50;
     private bool isSpawning = false;
 
@@ -35,6 +35,7 @@ public class SpawnManagerX : MonoBehaviour
             if (powerupCount == 0)
             {
                 isSpawning = true;
+                ClearEnemies(); // Clear existing enemies before spawning new ones
                 SpawnNewWave();
                 isSpawning = false;
             }
@@ -44,9 +45,15 @@ public class SpawnManagerX : MonoBehaviour
     // Generate random spawn position for powerups and enemy balls
     public Vector3 GenerateSpawnPosition()
     {
-        float xPos = Random.Range(-spawnRangeX, spawnRangeX);
-        float zPos = Random.Range(spawnZMin, spawnZMax);
-        return new Vector3(xPos, 0, zPos);
+        Vector3 spawnPosition;
+        do
+        {
+            float xPos = Random.Range(-spawnRangeX, spawnRangeX);
+            float zPos = Random.Range(spawnZMin, spawnZMax);
+            spawnPosition = new Vector3(xPos, 1, zPos);
+        } while (Vector3.Distance(spawnPosition, player.transform.position) < 5f); // Ensure it's at least 5 units away from the player
+
+        return spawnPosition;
     }
 
     public void SpawnNewWave()
@@ -66,6 +73,18 @@ public class SpawnManagerX : MonoBehaviour
         }
         
         Debug.Log("Wave " + waveCount + " started with " + waveCount + " enemies");
+        
+        // Increment wave count for the next wave
         waveCount++;
+    }
+
+    // Method to clear all enemies from the scene
+    private void ClearEnemies()
+    {
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy"); // Ensure enemies are tagged as "Enemy"
+        foreach (GameObject enemy in enemies)
+        {
+            Destroy(enemy);
+        }
     }
 }

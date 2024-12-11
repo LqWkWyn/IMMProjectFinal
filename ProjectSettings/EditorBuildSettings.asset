@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/src/isyourrefrigeratorrunning.unity
     guid: 65bd0b1acd108564aa08b7e3659ee072
+  - enabled: 1
+    path: Assets/src/GameOver.unity
+    guid: fda2373fcea61e84f87daa01bdd9c87a
   m_configObjects: {}

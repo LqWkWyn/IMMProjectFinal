@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerControllerX : MonoBehaviour
 {
@@ -12,8 +13,8 @@ public class PlayerControllerX : MonoBehaviour
     //public GameObject powerupIndicator;
     public int powerUpDuration = 5;
 
-    private float normalStrength = 10; // how hard to hit enemy without powerup
-    private float powerupStrength = 25; // how hard to hit enemy with powerup
+    
+    
     
     private bool controlsInverted = false; // Track if controls are inverted
 
@@ -45,7 +46,7 @@ public class PlayerControllerX : MonoBehaviour
         playerRb.AddForce(focalPoint.transform.forward * verticalInput * speed * Time.deltaTime);
         playerRb.AddForce(focalPoint.transform.right * horizontalInput * speed * Time.deltaTime);
 
-        // Set powerup indicator position to beneath player
+        // Set pow indicator position to beneath player
         //powerupIndicator.transform.position = transform.position + new Vector3(0, -0.6f, 0);
     }
 
@@ -70,21 +71,17 @@ public class PlayerControllerX : MonoBehaviour
     }
 
     // If Player collides with enemy
-    private void OnCollisionEnter(Collision other)
+       private void OnCollisionEnter(Collision collision)
     {
-        if (other.gameObject.CompareTag("Enemy"))
+        if (collision.gameObject.CompareTag("Enemy")) // Ensure your enemy has the "Enemy" tag
         {
-            Rigidbody enemyRigidbody = other.gameObject.GetComponent<Rigidbody>();
-            Vector3 awayFromPlayer = transform.position - other.gameObject.transform.position;
-
-            if (hasPowerup) // if have powerup hit enemy with powerup force
-            {
-                enemyRigidbody.AddForce(awayFromPlayer * powerupStrength, ForceMode.Impulse);
-            }
-            else // if no powerup, hit enemy with normal strength
-            {
-                enemyRigidbody.AddForce(awayFromPlayer * normalStrength, ForceMode.Impulse);
-            }
+            LoadNextScene();
         }
     }
+
+    private void LoadNextScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
 }
+
